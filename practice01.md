@@ -36,3 +36,47 @@ Check to see if a string has the same amount of 'x's and 'o's. The method must r
 	    })
 	    return arr_o.length === arr_x.length;
 	}
+
+
+### the  better solutions  others done ###
+
+
+**use RegExp**
+
+    function XO(str) {
+      let x = str.match(/x/gi);
+      let o = str.match(/o/gi);
+      return (x && x.length) === (o && o.length);
+    }
+
+----------
+
+	function XO(str) {
+	    var a = str.replace(/x/gi, ''),
+	        b = str.replace(/o/gi, '');
+	    return a.length === b.length;
+	}
+
+
+**use filter**
+
+    const XO = str => {
+    	str = str.toLowerCase().split('');
+	    return str.filter(x => x === 'x').length === str.filter(x => x === 'o').length;
+	}
+
+**use count to judge**
+
+	function XO(str) {
+	  var sum = 0;
+	  for(var i=0; i<str.length; i++){
+	    if(str[i].toLowerCase() == 'x') sum++;
+	    if(str[i].toLowerCase() == 'o') sum--;
+	  }
+	  return sum == 0;
+	}
+
+
+**mygod**
+
+    var XO=s=>![...s].reduce((t,v)=>t+((v=(v.charCodeAt()-24)%32)?v-23?0:-1:1),0)
